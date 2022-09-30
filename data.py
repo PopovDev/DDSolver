@@ -6,6 +6,8 @@ class Operation(Enum):
     neg = '~'
     conjunc = '^'
     disjunc = 'v'
+    ifthen = '>'
+    iff = '='
 
 
 @dataclass

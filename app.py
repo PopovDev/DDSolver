@@ -1,8 +1,16 @@
 from typing import Tuple
 from data import OperationNode, Operation, Variable
 import pandas as pd
+import sys
 
-a = f"({input('enter formula: ')})"
+if len(sys.argv)>1:
+    inp = sys.argv[1]
+else:
+    inp = input("Enter a statement: ")
+
+
+
+a = f"(({inp}))"
 
 
 def get_node(input: str) -> Tuple[OperationNode, list[Variable]]:
@@ -55,6 +63,10 @@ def calculate_node(node: OperationNode | Variable, vars: dict[str, bool]):
                     val = f and s
                 elif Operation(node.content[1]) == Operation.disjunc:
                     val = f or s
+                elif Operation(node.content[1]) == Operation.ifthen:
+                    val = not f or s
+                elif Operation(node.content[1]) == Operation.iff:
+                    val = f == s
     if val == None:
         raise Exception("error")
     return val
