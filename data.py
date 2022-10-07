@@ -8,6 +8,8 @@ class Operation(Enum):
     disjunc = 'v'
     ifthen = '>'
     iff = '='
+    nand = '|'
+    nor = '&'
 
 
 @dataclass

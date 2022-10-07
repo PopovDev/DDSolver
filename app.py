@@ -67,6 +67,10 @@ def calculate_node(node: OperationNode | Variable, vars: dict[str, bool]):
                     val = not f or s
                 elif Operation(node.content[1]) == Operation.iff:
                     val = f == s
+                elif Operation(node.content[1]) == Operation.nand:
+                    val = not (f and s)
+                elif Operation(node.content[1]) == Operation.nor:
+                    val = not (f or s)
     if val == None:
         raise Exception("error")
     return val
